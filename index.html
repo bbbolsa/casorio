@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Angie & Nehuen — Hay Casorio</title>
 
-  <!-- Open Graph para Whats/IG -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Angie & Nehuen — Hay Casorio" />
   <meta property="og:description" content="3 de octubre (civil) y 4 de octubre (fiesta). ¡Te esperamos!" />
   <meta property="og:image" content="https://haycasorio.org/assets/og.jpg" />
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- COLLAGE A TODO ANCHO -->
+  <!-- Collage superior a todo ancho -->
   <div class="mini-collage">
     <img src="/assets/banner/banner1.jpeg" alt="">
     <img src="/assets/banner/banner2.jpeg" alt="">
@@ -35,24 +35,40 @@
   <header class="hero container">
     <h1 class="title">Angie &amp; Nehuen</h1>
     <p class="subtitle">Hay casorio y estás invitadx ✨</p>
-    <div id="countdown" class="countdown">Cargando…</div>
-    <button id="playBtn" class="btn primary">Play September</button>
+    <div id="countdown" class="countdown"></div>
   </header>
 
   <section class="events container">
     <div class="event-card">
       <h2>Civil</h2>
       <p>3 de octubre – 12:30</p>
-      <div class="map"><a target="_blank" href="https://maps.app.goo.gl/MQfM7CYFUUpHeJm56">Ver mapa</a></div>
+      <div class="map-embed">
+        <iframe
+          title="Mapa Civil"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=https://maps.app.goo.gl/MQfM7CYFUUpHeJm56&output=embed">
+        </iframe>
+      </div>
+      <p class="map-link"><a target="_blank" href="https://maps.app.goo.gl/MQfM7CYFUUpHeJm56">Ver mapa</a></p>
       <div class="row">
         <a class="btn" id="civilGcal" href="#">Google Calendar</a>
         <a class="btn outline" id="civilIcs" href="#">Descargar .ics</a>
       </div>
     </div>
+
     <div class="event-card">
       <h2>Fiesta</h2>
       <p>4 de octubre – 17:00</p>
-      <div class="map"><a target="_blank" href="https://maps.app.goo.gl/CMFsLsjDp4NCaCxi7">Ver mapa</a></div>
+      <div class="map-embed">
+        <iframe
+          title="Mapa Fiesta"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=https://maps.app.goo.gl/CMFsLsjDp4NCaCxi7&output=embed">
+        </iframe>
+      </div>
+      <p class="map-link"><a target="_blank" href="https://maps.app.goo.gl/CMFsLsjDp4NCaCxi7">Ver mapa</a></p>
       <div class="row">
         <a class="btn" id="partyGcal" href="#">Google Calendar</a>
         <a class="btn outline" id="partyIcs" href="#">Descargar .ics</a>
@@ -89,8 +105,34 @@
     </div>
   </section>
 
-  <!-- GALERÍA -> CARRUSEL -->
+  <!-- Galería -> Carrusel -->
   <section class="carousel-wrap container">
     <h2>Galería</h2>
     <div class="carousel" id="carousel">
-      <button clas
+      <button class="nav prev" aria-label="Anterior">‹</button>
+      <img id="slide" src="/assets/gallery/banner1.jpeg" alt="foto" />
+      <button class="nav next" aria-label="Siguiente">›</button>
+    </div>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <section class="photos container">
+    <h2>Fotos del día</h2>
+    <a class="btn" target="_blank" href="https://drive.google.com/drive/folders/1RjsTeB9V9wI019YS0kOMqD1Pw3P8YU7M?usp=drive_link">Subí tus fotos y videos</a>
+  </section>
+
+  <section class="faq container">
+    <h2>Duditas rápidas</h2>
+    <details><summary>¿Se hace al aire libre?</summary><p>Sí, es al aire libre.</p></details>
+    <details><summary>¿Se suspende por lluvia?</summary><p>No se suspende por lluvia.</p></details>
+    <details><summary>¿Hay estacionamiento?</summary><p>Sí, hay estacionamiento.</p></details>
+    <details><summary>¿Cómo conviene ir?</summary><p>Es zona de quintas, transporte público limitado. Recomendamos auto/uber.</p></details>
+  </section>
+
+  <footer class="footer">
+    <p>Save the date — 3 y 4 de octubre, 2025.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
