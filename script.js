@@ -1,35 +1,30 @@
-// === Config rápida ===
-// cuántas fotos tenés en cada sección y extensión real
-const TOTAL_BANNER  = 10;     // collage de arriba
-const TOTAL_GALLERY = 10;     // carrusel (podés usar las mismas)
-const EXT = 'jpeg';           // tus archivos son .jpeg
+// === Config ===
+const TOTAL_GALLERY = 10;  // cambiá a 6 si querés usar menos
+const EXT = 'jpeg';        // tus archivos son .jpeg
 
-// ==== Countdown a la fiesta: 2025-10-04 17:00 ====
+// === Countdown a la fiesta ===
 (function(){
+  const wrap = document.getElementById('countdown');
   const target = new Date('2025-10-04T17:00:00-03:00').getTime();
-  const el = document.getElementById('countdown');
-  const tick = () => {
+  function box(value, label){
+    const d = document.createElement('div'); d.className='box';
+    d.innerHTML = `<div class="value">${value}</div><span class="label">${label}</span>`;
+    return d;
+  }
+  function tick(){
     const diff = target - Date.now();
-    if(diff <= 0){ el.textContent = '¡Es hoy!'; return; }
+    wrap.innerHTML = '';
+    if(diff<=0){ wrap.textContent='¡Es hoy!'; return; }
     const d = Math.floor(diff/86400000);
     const h = Math.floor((diff%86400000)/3600000);
     const m = Math.floor((diff%3600000)/60000);
     const s = Math.floor((diff%60000)/1000);
-    el.textContent = `${d} días ${h}h ${m}m ${s}s`;
-  };
+    wrap.append(box(d,'días'), box(h,'horas'), box(m,'min'), box(s,'seg'));
+  }
   setInterval(tick,1000); tick();
 })();
 
-// === Play September ===
-(function(){
-  const audio = document.getElementById('song');
-  const btn = document.getElementById('playBtn');
-  fetch(audio.src,{method:'HEAD'}).then(r=>{ if(!r.ok) btn.style.display='none'; })
-  .catch(()=>btn.style.display='none');
-  btn?.addEventListener('click', ()=>{ audio.play().catch(()=>{}); });
-})();
-
-// === Calendar links & ICS ===
+// === Google Calendar + ICS ===
 function buildGoogleUrl({title, start, end, location, details}){
   const clean = d => d.replace(/[-:]/g,'').replace('.000','');
   const url = new URL('https://calendar.google.com/calendar/render');
@@ -50,8 +45,8 @@ function downloadIcs({title, start, end, location, details}){
     'DTEND;TZID=America/Argentina/Buenos_Aires:'+end.replace(/[-:]/g,'').replace('.000',''),
     'LOCATION:'+location,'DESCRIPTION:'+details,'END:VEVENT','END:VCALENDAR'
   ].join('\r\n');
-  const blob = new Blob([ics], {type:'text/calendar'});
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([ics], {type:'text/calendar'}));
   a.download = 'evento.ics'; a.click();
 }
 (function(){
@@ -72,7 +67,7 @@ function downloadIcs({title, start, end, location, details}){
   document.getElementById('partyIcs').addEventListener('click', e=>{e.preventDefault(); downloadIcs(party);});
 })();
 
-// === Carrusel (reemplaza la galería) ===
+// === Carrusel ===
 (function(){
   const slide = document.getElementById('slide');
   const dotsWrap = document.getElementById('dots');
@@ -81,8 +76,6 @@ function downloadIcs({title, start, end, location, details}){
   if(!slide || !dotsWrap) return;
 
   const src = i => `/assets/gallery/banner${i}.${EXT}`;
-
-  // puntitos
   for(let i=1;i<=TOTAL_GALLERY;i++){
     const b=document.createElement('button');
     b.addEventListener('click',()=>go(i));
@@ -91,7 +84,7 @@ function downloadIcs({title, start, end, location, details}){
   const dots = [...dotsWrap.children];
 
   let i=1, timer;
-  function render(){ 
+  function render(){
     slide.src = src(i);
     dots.forEach((d,idx)=>d.classList.toggle('active', idx===i-1));
   }
