@@ -1,0 +1,53 @@
+:root{
+  --cream:#EDEAE2;
+  --blue:#45708E;
+  --red:#B8534B;
+  --bluegray:#A9B4BA;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Nunito',system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--cream);color:#1a1a1a}
+.bg-pattern{
+  position:fixed;inset:0;pointer-events:none;
+  background-image:url('/assets/patterns/doodles.png');
+  opacity:.12;background-size:300px auto;mix-blend-mode:multiply;z-index:0
+}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.hero{position:relative;text-align:center;padding:56px 16px 24px}
+.title{font-family:'Pacifico',cursive;margin:0;font-size:56px;color:var(--blue)}
+.subtitle{margin:8px 0 16px;color:#333}
+.countdown{font-size:20px;margin-bottom:16px;color:var(--red)}
+.banner{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px auto;max-width:900px}
+.banner img{width:100%;height:180px;object-fit:cover;border-radius:var(--radius);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;border:2px solid var(--blue);
+  text-decoration:none;color:var(--blue);font-weight:700}
+.btn.primary{background:var(--red);color:white;border-color:var(--red)}
+.btn.outline{background:transparent}
+.btn + .btn{margin-left:8px}
+.row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.event-card{background:white;border:1px solid var(--bluegray);border-radius:var(--radius);padding:16px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.event-card h2{margin-top:0;color:var(--blue)}
+.map a{color:var(--red);font-weight:700}
+
+.rsvp{padding-top:8px;text-align:center}
+.gifts{background:#fff3f2;border-top:1px solid var(--bluegray);border-bottom:1px solid var(--bluegray)}
+.gifts h2{margin:0 0 8px;color:var(--blue)}
+.alias{color:#444}
+
+.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:white;border:1px solid var(--bluegray);border-radius:var(--radius);padding:16px}
+
+.gallery .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+.gallery img{width:100%;height:160px;object-fit:cover;border-radius:12px}
+
+.faq details{background:white;border:1px solid var(--bluegray);border-radius:12px;padding:12px;margin-bottom:8px}
+
+.photos{text-align:center}
+.footer{text-align:center;padding:24px;color:#666}
+@media (min-width:900px){
+  .banner img{height:220px}
+}
