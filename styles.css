@@ -15,7 +15,31 @@ body{margin:0;font-family:'Nunito',system-ui,-apple-system,Segoe UI,Roboto,Arial
 }
 .container{max-width:1100px;margin:0 auto;padding:24px}
 .hero{position:relative;text-align:center;padding:56px 16px 24px}
-.title{font-family:'Pacifico',cursive;margin:0;font-size:56px;color:var(--blue)}
+.mini-collage{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:6px; 
+  max-width:1100px; 
+  margin:0 auto 18px; 
+  padding:0 12px;
+}
+.mini-collage img{
+  width:100%; 
+  height:56px; 
+  object-fit:cover; 
+  border-radius:10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+@media (max-width:600px){
+  .mini-collage{ grid-template-columns:repeat(6,1fr); }
+}
+.title{
+  font-family:'Pacifico',cursive;
+  margin:0;
+  font-size:clamp(48px, 8vw, 96px);
+  color:var(--red);
+  letter-spacing:.5px;
+}
 .subtitle{margin:8px 0 16px;color:#333}
 .countdown{font-size:20px;margin-bottom:16px;color:var(--red)}
 .banner{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px auto;max-width:900px}
